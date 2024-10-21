@@ -50,6 +50,20 @@ class TodoList extends StatelessWidget {
             dataColor = Colors.black; // Data futura
           }
 
+          // Define a cor com base na prioridade
+          Color getPriorityColor(String prioridade) {
+            switch (prioridade) {
+              case 'BAIXA':
+                return Colors.blue; // Cor para prioridade baixa
+              case 'NORMAL':
+                return Colors.orange; // Cor para prioridade normal
+              case 'ALTA':
+                return Colors.red; // Cor para prioridade alta
+              default:
+                return Colors.black; // Cor padrão
+            }
+          }
+
           return GestureDetector(
             onTap: () => _openTaskDetail(tarefa),
             child: Card(
@@ -76,7 +90,9 @@ class TodoList extends StatelessWidget {
                     Expanded(
                       child: Text(
                         tarefa.prioridade,
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: getPriorityColor(
+                                tarefa.prioridade)), // Cor personalizada
                         textAlign: TextAlign.center,
                       ),
                     ),

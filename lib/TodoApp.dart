@@ -39,6 +39,7 @@ class _TodoAppState extends State<TodoApp> {
       prioridade: prioridadeTarefa,
       observacoes: observacoesTarefa,
       dataTarefa: dataSelecionada,
+      dataCriacaoTarefa: DateTime.now(),
     );
 
     setState(() {
